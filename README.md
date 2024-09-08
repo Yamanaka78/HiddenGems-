@@ -72,3 +72,7 @@ Google Maps APIを活用して、ユーザーが選択したスポットを地�
 
 ### 画面遷移図
 https://www.figma.com/design/H4SSGqlIDGQPycjxiQUUdq/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA?node-id=0-1&node-type=CANVAS&t=xcqWseeimxyLckiB-0
+
+### ER図
+
+https://www.figma.com/design/Gbf8ASjNrYjn4OvQOF51VD/ER%E5%9B%B3?node-id=0-1&node-type=CANVAS&t=rJtK6WDej0g7f79s-0
