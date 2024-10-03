@@ -1,0 +1,75 @@
+<header class="flex justify-between items-center p-4 bg-gray-100 shadow-md">
+  <!-- ロゴ部分 -->
+  <p class="header-logo ml-4">
+    HiddenGems
+  </p>
+
+  <!-- アイコンメニュー -->
+  <div class="header-icon">
+    <ul class="flex items-center space-x-6">
+      <!-- 投稿ボタン -->
+      <li class="flex items-center">
+        <a href="/" class="bg-orange-500 text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
+          投稿
+        </a>
+      </li>
+      <!-- ハンバーガーメニュー -->
+      <li class="flex flex-col items-center ml-8">
+        <button class="header-menu flex flex-col items-center" onclick="toggleMenu()">
+          <div id="is-header-menu" class="space-y-1.5">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+          </div>
+          <span class="mt-2">メニュー</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- モーダルナビゲーション（右側に表示） -->
+<nav id="modal-nav" class="l-nav top-nav fixed inset-0 bg-gray-900 bg-opacity-75 z-50 transform translate-x-full transition-transform duration-300">
+  <div class="nav bg-white w-64 h-full p-6 overflow-auto fixed right-0 top-0">
+    <div class="nav-header flex justify-between items-center">
+      <div class="nav-user"></div>
+      <!-- 閉じるボタン -->
+      <button onclick="toggleMenu()">
+        <div class="nav-close is-nav-close-under flex space-x-2">
+          <span class="block w-6 h-0.5 bg-gray-800"></span>
+          <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </div>
+        <span>閉じる</span>
+      </button>
+    </div>
+
+    <!-- メニューリスト -->
+    <div class="nav-list mt-6">
+      <div class="nav-btn-area mb-6">
+        <a href="/signup" class="btn-secondary block bg-blue-500 py-2 px-4 rounded mb-2 text-center">新規登録</a>
+        <a href="/login" class="btn-secondary block bg-blue-500 py-2 px-4 rounded text-center">ログイン</a>
+      </div>
+      <ul class="nav-menu space-y-4">
+        <li><a href="/area" class="flex justify-between items-center">スポット一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
+        <li><a href="/article" class="flex justify-between items-center">プラン一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
+        <li><a href="/user" class="flex justify-between items-center">口コミ一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
+        <li><a href="/hashtag" class="flex justify-between items-center">タグ一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
+      </ul>
+
+      <ul class="nav-menu-under mt-6 space-y-4">
+        <li><a href="/support">お問い合わせ</a></li>
+        <li><a href="/terms">利用規約</a></li>
+        <li><a href="/" target="_blank">プライバシーポリシー</a></li>
+        <li><a href="/" target="_blank">サイトについて</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('modal-nav');
+    menu.classList.toggle('translate-x-full');
+    menu.classList.toggle('translate-x-0');
+  }
+</script>
