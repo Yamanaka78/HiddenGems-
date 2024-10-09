@@ -2,9 +2,10 @@ module SystemHelper
   def login_as_general
     general_user = create(:user)
     visit root_path
+    find('.header-menu').click
     click_link "ログイン"
-    fill_in 'Email', with: general_user.email
-    fill_in 'Password', with: '12345678'
+    fill_in 'email', with: general_user.email
+    fill_in 'password', with: '12345678'
     click_button 'ログイン'
   end
 end
