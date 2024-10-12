@@ -1,0 +1,40 @@
+<div class="container mx-auto px-4 py-6">
+  <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">ログイン</h1>
+    <%= form_with url: login_path do |f| %>
+      <!-- メールアドレス -->
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, class: "input input-bordered w-full mt-2 form-control" %>
+      </div>
+
+      <!-- パスワード -->
+      <div class="mb-3">
+        <%= f.label :password, "パスワード", class: "block text-sm font-medium text-gray-700" %>
+        <div class="relative">
+          <%= f.password_field :password, class: "input input-bordered w-full mt-2 form-control" %>
+        </div>
+        <p class="text-sm text-gray-500 mt-1">半角英数・記号の8文字以上で入力してください。</p>
+      </div>
+
+      <!-- ログインボタン -->
+      <div class="mb-3">
+        <%= f.submit "ログイン", class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+
+    <!-- 会員登録へ -->
+    <div class="text-center mb-1 mt-3">
+      <%= link_to '登録ページへ', new_user_path, class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+
+    <!-- パスワード忘れ -->
+    <div class="text-center mb-6">
+      <%= link_to 'パスワードをお忘れの方はこちら', '#', class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+    <p class="text-center text-gray-500 mb-4">----------------- または ----------------- </p>
+    <!-- SNSログイン -->
+    <a href="#" class="btn btn-outline w-full mb-2">Facebookでログイン</a>
+    <a href="#" class="btn btn-outline w-full">Googleでログイン</a>
+  </div>
+</div>
