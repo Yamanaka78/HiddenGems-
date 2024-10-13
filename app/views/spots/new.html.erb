@@ -1,0 +1,96 @@
+<!-- app/views/reviews/new.html.erb -->
+
+<!-- ヘッダー -->
+<header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+  <a href="/">
+    <img src="/images/common/logo.svg" alt="Logo" class="h-8">
+  </a>
+  <a href="#" class="text-white">キャンセル</a>
+</header>
+
+<!-- レビュー投稿フォーム -->
+<div class="max-w-3xl mx-auto mt-8">
+  <h1 class="text-2xl font-semibold mb-4">旅行レビューを投稿</h1>
+
+  <!-- 画像アップロード -->
+  <div class="mb-6">
+    <label for="review_images" class="block text-gray-700 font-medium mb-2">レビュー画像をアップロード（最大20枚まで）</label>
+    <input type="file" id="review_images" name="review_images[]" multiple accept=".jpg, .jpeg, .png, .gif" class="border border-gray-300 rounded p-2 w-full">
+    <p class="text-gray-500 mt-2">※1枚の画像のサイズは縦横4100px以内、容量は30MB以内</p>
+  </div>
+
+  <!-- スポットの選択 -->
+  <div class="mb-6">
+    <label for="spot" class="block text-gray-700 font-medium mb-2">訪れたスポット</label>
+    <div class="relative">
+      <input type="text" id="spot" name="spot" class="border border-gray-300 rounded p-2 w-full" placeholder="スポットを選択または入力">
+      <span class="absolute right-2 top-2 text-gray-500">
+        <!-- ピンのアイコン (TailwindCSSのHeroiconsなどを使う) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5 8a7 7 0 1114 0 7 7 0 01-14 0zm7-6a6 6 0 100 12A6 6 0 0012 2zm-.75 5.25a.75.75 0 111.5 0v3.5a.75.75 0 01-1.5 0v-3.5zm0 7.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- 評価（星の数） -->
+  <div class="mb-6">
+    <label for="rating" class="block text-gray-700 font-medium mb-2">評価</label>
+    <div id="rating" class="flex space-x-2 text-yellow-400">
+      <% 5.times do |i| %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer <%= i < 3 ? 'fill-current' : 'text-gray-300' %>" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor">
+          <path fill-rule="evenodd" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" clip-rule="evenodd" />
+        </svg>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- タイトルと本文 -->
+  <div class="mb-6">
+    <label for="title" class="block text-gray-700 font-medium mb-2">タイトル</label>
+    <input type="text" id="title" name="title" class="border border-gray-300 rounded p-2 w-full" maxlength="30" placeholder="タイトルを入力">
+  </div>
+  <div class="mb-6">
+    <label for="content" class="block text-gray-700 font-medium mb-2">レビュー本文</label>
+    <textarea id="content" name="content" class="border border-gray-300 rounded p-2 w-full" maxlength="9999" rows="5" placeholder="レビュー本文を入力"></textarea>
+  </div>
+
+  <!-- 誰と一緒に行ったかの選択 -->
+  <div class="mb-6">
+    <label for="companion" class="block text-gray-700 font-medium mb-2">誰と一緒に行きましたか？</label>
+    <select id="companion" name="companion" class="border border-gray-300 rounded p-2 w-full">
+      <option value="alone">一人</option>
+      <option value="friends">友人</option>
+      <option value="couple">カップル</option>
+      <option value="family_kids">子連れ</option>
+      <option value="family_other">家族（大人のみ）</option>
+    </select>
+  </div>
+
+  <!-- 旅行日 -->
+  <div class="mb-6">
+    <label for="trip_date" class="block text-gray-700 font-medium mb-2">旅行日</label>
+    <div class="flex space-x-4">
+      <select id="year" name="year" class="border border-gray-300 rounded p-2">
+        <% (2020..2024).each do |year| %>
+          <option value="<%= year %>"><%= year %></option>
+        <% end %>
+      </select>
+      <select id="month" name="month" class="border border-gray-300 rounded p-2">
+        <% (1..12).each do |month| %>
+          <option value="<%= month %>"><%= month %></option>
+        <% end %>
+      </select>
+      <select id="day" name="day" class="border border-gray-300 rounded p-2">
+        <% (1..31).each do |day| %>
+          <option value="<%= day %>"><%= day %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <!-- 投稿ボタン -->
+  <div class="text-right">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">投稿する</button>
+  </div>
+</div>
