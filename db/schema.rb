@@ -17,12 +17,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_13_110354) do
   create_table "spots", force: :cascade do |t|
     t.string "spot_image"
     t.string "title", null: false
+    t.string "spot", null: false
+    t.string "tag"
     t.text "description", null: false
     t.bigint "user_id", null: false
-    t.integer "visit_year", null: false
-    t.integer "visit_month", null: false
-    t.integer "visit_day", null: false
-    t.integer "purpose", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_spots_on_user_id"

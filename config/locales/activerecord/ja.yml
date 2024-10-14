@@ -2,9 +2,16 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      spot: スポット
     attributes:
       user:
         name: ニックネーム
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+      spot:
+        spot_image: スポット画像をアップロード
+        spot: 訪れたスポット
+        title: タイトル
+        tag: タグ
+        description: スポット詳細
