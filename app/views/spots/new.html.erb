@@ -3,6 +3,7 @@
 
   <!-- form_withを使用したフォーム -->
   <%= form_with model: @spot, class: "new_spot", local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
     <!-- 画像アップロード -->
     <div class="mb-6">

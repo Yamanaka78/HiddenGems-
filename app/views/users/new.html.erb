@@ -3,6 +3,7 @@
     <h1 class="text-2xl font-bold mb-6 text-center"><%= t('.title') %></h1>
 
     <%= form_with model: @user, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
       <!-- ニックネーム -->
       <div class="mb-3">
         <%= f.label :name, class: "form-label block text-sm font-medium text-gray-700" %>
