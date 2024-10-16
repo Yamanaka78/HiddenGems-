@@ -10,8 +10,8 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
       spot:
-        spot_image: スポット画像をアップロード
-        spot: 訪れたスポット
+        images: 画像をアップロード
+        spot: 訪れたスポット名
         title: タイトル
         tag: タグ
         description: スポット詳細

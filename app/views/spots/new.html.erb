@@ -4,13 +4,9 @@
   <!-- form_withを使用したフォーム -->
   <%= form_with model: @spot, class: "new_spot", local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-
-    <!-- 画像アップロード -->
-    <div class="mb-6">
-      <%= f.label :spot_image, class: "block text-gray-700 font-medium mb-2" %>
-      <%= f.file_field :spot_image, multiple: true, accept: ".jpg, .jpeg, .png, .gif", class: "border border-gray-300 rounded p-2 w-full" %>
-      <p class="text-gray-500 mt-2">※画像のサイズは縦横4100px以内、容量は30MB以内</p>
-    </div>
+  
+  <!-- 画像アップロード -->
+    <%= render 'spots/image_preview', form: f, spot: @spot %>
 
     <!-- スポットの選択 -->
     <div class="mb-6">
@@ -24,12 +20,6 @@
     <div class="mb-6">
       <%= f.label :title, class: "block text-gray-700 font-medium mb-2" %>
       <%= f.text_field :title, class: "border border-gray-300 rounded p-2 w-full", maxlength: "30", placeholder: "タイトルを入力" %>
-    </div>
-
-    <!-- タグ -->
-    <div class="mb-6">
-      <%= f.label :tag, "タグ", class: "block text-gray-700 font-medium mb-2" %>
-      <%= f.text_field :tag, class: "border border-gray-300 rounded p-2 w-full", maxlength: "30", placeholder: "タグを入力" %>
     </div>
 
     <!-- スポット詳細 -->

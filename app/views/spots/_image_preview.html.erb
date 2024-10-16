@@ -1,0 +1,21 @@
+<div class="mb-6" data-controller="previews">
+  <%= form.label :images, class: "block text-gray-700 font-medium mb-2" %><br>
+  <%= form.file_field :images, multiple: true, accept: ".jpg, .jpeg, .png, .gif",
+    direct_upload: true,
+    data: { previews_target: "input", action: "change->previews#preview" },
+    class: "border border-gray-300 rounded p-2 w-full" %>
+
+  <!-- 既存画像を表示 -->
+  <% if spot.images.attached? %>
+    <div id="existing-images" class="grid grid-cols-3 gap-4 mt-4">
+      <% spot.images.each do |image| %>
+        <%= image_tag image, class: "w-32 h-32 object-cover rounded", data: { previews_target: "preview" } %>
+      <% end %>
+    </div>
+  <% else %>
+    <!-- 新規アップロードのための空のプレビュー領域 -->
+    <div id="image-preview" class="grid grid-cols-3 gap-4 mt-4">
+      <%= image_tag "", class: "w-32 h-32 object-cover rounded", data: { previews_target: "preview" } %>
+    </div>
+  <% end %>
+</div>
