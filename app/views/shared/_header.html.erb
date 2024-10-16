@@ -1,7 +1,7 @@
 <header class="flex justify-between items-center p-4 bg-gray-100 shadow-md">
   <!-- ロゴ部分 -->
   <p class="header-logo ml-4">
-    HiddenGems
+    <%= link_to "HiddenGems", root_path, class:"bg-teal-500 text-white font-bold py-2 px-4 rounded hover:bg-teal-600" %>
   </p>
 
   <!-- アイコンメニュー -->
@@ -9,9 +9,7 @@
     <ul class="flex items-center space-x-6">
       <!-- 投稿ボタン -->
       <li class="flex items-center">
-        <a href="/" class="bg-orange-500 text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
-          投稿
-        </a>
+        <%= link_to t('header.spot_posts'), new_spot_path, class:"bg-orange-500 text-white font-bold py-2 px-4 rounded hover:bg-orange-600" %>
       </li>
       <!-- ハンバーガーメニュー -->
       <li class="flex flex-col items-center ml-8">
@@ -46,11 +44,11 @@
     <!-- メニューリスト -->
     <div class="nav-list mt-6">
       <div class="nav-btn-area mb-6">
-        <%= link_to '新規登録', new_user_path, class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded mb-2 text-center" %>
+        <%= link_to t('header.new_registration'), new_user_path, class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded mb-2 text-center" %>
         <% if logged_in? %>
-          <%= link_to 'ログアウト', logout_path, class: 'class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center', data: { turbo_method: :delete } %>
+          <%= link_to t('header.logout'), logout_path, class: 'class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center', data: { turbo_method: :delete } %>
         <% else %>
-          <%= link_to 'ログイン', login_path, class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center" %>
+          <%= link_to t('header.login'), login_path, class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center" %>
         <% end %>
       </div>
       <ul class="nav-menu space-y-4">

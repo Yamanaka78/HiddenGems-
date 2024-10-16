@@ -1,0 +1,37 @@
+<div class="max-w-3xl mx-auto mt-8">
+  <h1 class="text-2xl font-semibold mb-4"><%= t('.title') %></h1>
+
+  <!-- form_withを使用したフォーム -->
+  <%= form_with model: @spot, class: "new_spot", local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <!-- 画像アップロード -->
+    <%= render 'spots/image_preview', form: f, spot: @spot %>
+
+    <!-- スポットの選択 -->
+    <div class="mb-6">
+      <%= f.label :spot, class: "block text-gray-700 font-medium mb-2" %>
+      <div class="relative">
+        <%= f.text_field :spot, class: "border border-gray-300 rounded p-2 w-full", placeholder: "スポットを選択または入力" %>
+      </div>
+    </div>
+
+    <!-- タイトル -->
+    <div class="mb-6">
+      <%= f.label :title, class: "block text-gray-700 font-medium mb-2" %>
+      <%= f.text_field :title, class: "border border-gray-300 rounded p-2 w-full", maxlength: "30", placeholder: "タイトルを入力" %>
+    </div>
+
+    <!-- スポット詳細 -->
+    <div class="mb-6">
+      <%= f.label :description, "スポット詳細", class: "block text-gray-700 font-medium mb-2" %>
+      <%= f.text_area :description, class: "border border-gray-300 rounded p-2 w-full", maxlength: "9999", rows: "5", placeholder: "スポット詳細を入力" %>
+    </div>
+
+    <!-- 投稿ボタン -->
+    <div class="text-right">
+      <%= f.submit t('.post'), class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,40 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+    label:
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード確認
+  defaults:
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      require_login: ログインしてください
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
+  users:
+    new:
+      title: 会員登録
+      email_registration: "メールアドレスで登録"
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
+  spots:
+    new:
+      title: スポットを投稿
+      post: 投稿する
+  header:
+    login: ログイン
+    logout: ログアウト
+    new_registration: 新規登録
+    spot_posts: スポット投稿
