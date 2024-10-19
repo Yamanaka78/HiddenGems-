@@ -1,5 +1,6 @@
 class SpotsController < ApplicationController
   def index
+    @spots = Spot.includes(:user)
   end
 
   def new
