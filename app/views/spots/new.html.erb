@@ -3,9 +3,9 @@
 
   <!-- form_withを使用したフォーム -->
   <%= form_with model: @spot, class: "new_spot", local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-  <!-- 画像アップロード -->
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <!-- 画像アップロード -->
     <%= render 'spots/image_preview', form: f, spot: @spot %>
 
     <!-- スポットの選択 -->

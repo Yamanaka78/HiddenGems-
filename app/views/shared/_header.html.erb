@@ -46,16 +46,42 @@
       <div class="nav-btn-area mb-6">
         <%= link_to t('header.new_registration'), new_user_path, class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded mb-2 text-center" %>
         <% if logged_in? %>
-          <%= link_to t('header.logout'), logout_path, class: 'class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center', data: { turbo_method: :delete } %>
+          <%= link_to t('header.logout'), logout_path, class: 'nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center', data: { turbo_method: :delete } %>
         <% else %>
           <%= link_to t('header.login'), login_path, class: "nav-link btn-secondary block bg-blue-500 py-2 px-4 rounded text-center" %>
         <% end %>
       </div>
       <ul class="nav-menu space-y-4">
-        <li><a href="/area" class="flex justify-between items-center">スポット一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
-        <li><a href="/article" class="flex justify-between items-center">プラン一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
-        <li><a href="/user" class="flex justify-between items-center">口コミ一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
-        <li><a href="/hashtag" class="flex justify-between items-center">タグ一覧<svg viewBox="0 0 30 30" class="w-4 h-4"><use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use></svg></a></li>
+        <li>
+          <%= link_to "HiddenGemsについて","#", class: "flex justify-between items-center" %>
+        </li>
+        <li>
+          <%= link_to t('header.spots_list'), spots_path, class: "flex justify-between items-center" %>
+        </li>
+        <li>
+          <%= link_to "#", class: "flex justify-between items-center" do %>
+            プラン一覧
+            <svg viewBox="0 0 30 30" class="w-4 h-4">
+              <use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use>
+            </svg>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: "flex justify-between items-center" do %>
+            口コミ一覧
+            <svg viewBox="0 0 30 30" class="w-4 h-4">
+              <use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use>
+            </svg>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: "flex justify-between items-center" do %>
+            タグ一覧
+            <svg viewBox="0 0 30 30" class="w-4 h-4">
+              <use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use>
+            </svg>
+          <% end %>
+        </li>
       </ul>
 
       <ul class="nav-menu-under mt-6 space-y-4">

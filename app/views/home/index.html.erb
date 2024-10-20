@@ -18,7 +18,7 @@
                   <use xlink:href="/images/common/svg/icon.svg#icon_search"></use>
                 </svg>
               </span>
-              <input type="search" placeholder="エリア・スポット名で検索" aria-label="エリア・スポット名で検索" class="input input-bordered w-full h-12 pl-10" />
+              <input type="search" placeholder="エリア・スポット名で検索" aria-label="エリア・スポット名で検索" class="input input-bordered w-full h-12 pl-10">
             </div>
             <button class="btn btn-primary h-12 ml-2 px-6">検索</button>
           </div>
@@ -34,47 +34,50 @@
     おすすめスポット
   </h2>
   <div class="flex space-x-4 overflow-x-auto py-4">
-    <% @spots.each do |spot| %>
-      <article class="min-w-[300px] bg-white rounded-lg shadow-md">
-        <div class="relative">
-          <% if spot.images.attached? %>
-            <%= image_tag url_for(spot.images.first), alt: spot.title, class: 'w-full h-48 object-cover' %>
-          <% end %>
-        </div>
-        <div class="p-4">
-          <h3 class="text-lg font-semibold flex items-center">
-            <svg class="w-4 h-4 mr-2" viewBox="0 0 30 30" aria-hidden="true">
-              <use xlink:href="/images/common/svg/icon.svg#icon_pin_fill"></use>
-            </svg>
-            <%= spot.title %>
-          </h3>
-          <p class="mt-2 text-gray-600 break-words">
-            <%= truncate(spot.description, length: 100) %> <!-- 長い説明は100文字でカット -->
+  <% @spots.each do |spot| %>
+    <article class="min-w-[300px] bg-white rounded-lg shadow-md">
+      <div class="relative">
+        <% if spot.images.attached? %>
+          <%= image_tag url_for(spot.images.first), alt: spot.title, class: 'w-full h-48 object-cover' %>
+        <% end %>
+      </div>
+      <div class="p-4">
+        <h3 class="text-lg font-semibold flex items-center">
+          <svg class="w-4 h-4 mr-2" viewBox="0 0 30 30" aria-hidden="true">
+            <use xlink:href="/images/common/svg/icon.svg#icon_pin_fill"></use>
+          </svg>
+          <%= spot.title %>
+        </h3>
+        <div class="description-container h-24 overflow-hidden">
+          <p class="mt-2 text-gray-600 break-words break-all">
+            <%= truncate(spot.description, length: 50) %> <!-- 長い説明は100文字でカット -->
           </p>
-          <div class="flex mt-4 space-x-2">
-            <span class="badge bg-blue-500 text-white">カテゴリー名</span> <!-- タグやカテゴリーを表示する場合に使用 -->
-          </div>
-          <div class="flex items-center mt-4">
-            <!-- レーティングのデザインは仮です。モデルに評価を追加する場合は変更してください -->
-            <div class="rating">
-              <input type="radio" class="mask mask-star bg-yellow-400" checked />
-              <input type="radio" class="mask mask-star bg-yellow-400" />
-              <input type="radio" class="mask mask-star bg-yellow-400" />
-              <input type="radio" class="mask mask-star bg-yellow-400" />
-              <input type="radio" class="mask mask-star bg-yellow-400" />
-            </div>
-            <p class="ml-2 text-sm">4.16 (104件)</p>
-          </div>
         </div>
-      </article>
-    <% end %>
-  </div>
+        <div class="flex mt-4 space-x-2">
+          <span class="badge bg-blue-500 text-white">カテゴリー名</span> <!-- タグやカテゴリーを表示する場合に使用 -->
+        </div>
+        <div class="flex items-center mt-4">
+          <!-- レーティングのデザインは仮です。モデルに評価を追加する場合は変更してください -->
+          <div class="rating">
+            <input type="radio" class="mask mask-star bg-yellow-400" checked>
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+          </div>
+          <p class="ml-2 text-sm">4.16 (104件)</p>
+        </div>
+      </div>
+    </article>
+  <% end %>
+</div>
+
   <p class="mb-4 text-right">
     <a href="/" class="flex items-center justify-end text-blue-600">
       <svg class="w-4 h-4 mr-2" viewBox="0 0 30 30">
         <use xlink:href="/images/common/svg/icon.svg#icon_arrow"></use>
       </svg>
-      おすすめスポット
+      <%= link_to t('home.spots_list'), spots_path, class: "text-blue-500" %>
     </a>
   </p>
 </section>
@@ -103,11 +106,11 @@
         </div>
         <div class="flex items-center mt-4">
           <div class="rating">
-            <input type="radio" class="mask mask-star bg-yellow-400" checked />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
+            <input type="radio" class="mask mask-star bg-yellow-400" checked>
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
           </div>
           <p class="ml-2 text-sm">4.16 (104件)</p>
         </div>
@@ -133,11 +136,11 @@
         </div>
         <div class="flex items-center mt-4">
           <div class="rating">
-            <input type="radio" class="mask mask-star bg-yellow-400" checked />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
+            <input type="radio" class="mask mask-star bg-yellow-400" checked>
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
           </div>
           <p class="ml-2 text-sm">4.21 (119件)</p>
         </div>
@@ -164,11 +167,11 @@
         </div>
         <div class="flex items-center mt-4">
           <div class="rating">
-            <input type="radio" class="mask mask-star bg-yellow-400" checked />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
+            <input type="radio" class="mask mask-star bg-yellow-400" checked>
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
           </div>
           <p class="ml-2 text-sm">3.94 (78件)</p>
         </div>
@@ -194,11 +197,11 @@
         </div>
         <div class="flex items-center mt-4">
           <div class="rating">
-            <input type="radio" class="mask mask-star bg-yellow-400" checked />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
+            <input type="radio" class="mask mask-star bg-yellow-400" checked>
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
           </div>
           <p class="ml-2 text-sm">3.94 (78件)</p>
         </div>
@@ -224,11 +227,11 @@
         </div>
         <div class="flex items-center mt-4">
           <div class="rating">
-            <input type="radio" class="mask mask-star bg-yellow-400" checked />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
-            <input type="radio" class="mask mask-star bg-yellow-400" />
+            <input type="radio" class="mask mask-star bg-yellow-400" checked>
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
+            <input type="radio" class="mask mask-star bg-yellow-400">
           </div>
           <p class="ml-2 text-sm">3.94 (78件)</p>
         </div>

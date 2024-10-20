@@ -38,3 +38,6 @@ ja:
     logout: ログアウト
     new_registration: 新規登録
     spot_posts: スポット投稿
+    spots_list: スポット一覧へ
+  home:
+    spots_list: スポット一覧へ

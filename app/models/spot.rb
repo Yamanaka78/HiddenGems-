@@ -1,5 +1,4 @@
 class Spot < ApplicationRecord
-
   belongs_to :user
   has_many_attached :images
 
@@ -15,7 +14,7 @@ class Spot < ApplicationRecord
     if images.attached?
       images.each do |image|
         if !image.content_type.in?(%w[image/jpeg image/png image/gif])
-          errors.add(:image, '：ファイル形式が、JPEG, PNG, GIF以外になってます。ファイル形式をご確認ください。')
+          errors.add(:image, "：ファイル形式が、JPEG, PNG, GIF以外になってます。ファイル形式をご確認ください。")
         end
       end
     end
@@ -25,10 +24,9 @@ class Spot < ApplicationRecord
     if images.attached?
       images.each do |image|
         if image.blob.byte_size > 1.megabytes
-          errors.add(:image, '：1MB以下のファイルをアップロードしてください。')
+          errors.add(:image, "：1MB以下のファイルをアップロードしてください。")
         end
       end
     end
   end
-
 end

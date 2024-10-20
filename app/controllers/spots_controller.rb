@@ -10,9 +10,9 @@ class SpotsController < ApplicationController
   def create
     @spot = current_user.spots.build(spot_params)
     if @spot.save
-      redirect_to root_path, success: t('defaults.flash_message.created', item: Spot.model_name.human)
+      redirect_to root_path, success: t("defaults.flash_message.created", item: Spot.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_created', item: Spot.model_name.human)
+      flash.now[:danger] = t("defaults.flash_message.not_created", item: Spot.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end

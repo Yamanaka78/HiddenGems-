@@ -1,19 +1,17 @@
 <div class="bg-white rounded-lg shadow-md p-6 flex mb-6">
-<div class="w-2/3">
-  <% if spot.images.attached? %>
-    <div class="flex gap-2 overflow-x-scroll scrollbar-hide h-80">
-      <% spot.images.each do |image| %>
-        <div class="flex-none w-64">
-          <%= image_tag image,
-                        class: "rounded-lg object-cover h-64 w-full",
-                        alt: spot.title %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-
+  <div class="w-2/3">
+    <% if spot.images.attached? %>
+      <div class="flex gap-2 overflow-x-scroll scrollbar-hide h-80">
+        <% spot.images.each do |image| %>
+          <div class="flex-none w-64">
+            <%= image_tag image,
+                          class: "rounded-lg object-cover h-64 w-full",
+                          alt: spot.title %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="w-1/3 pl-6 flex flex-col justify-between">
     <div>
