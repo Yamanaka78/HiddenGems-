@@ -52,6 +52,7 @@ group :development, :test do
   gem "faker"
   gem "rails-i18n", "~> 7.0.0"
   gem "image_processing"
+  gem 'erb_lint'
 end
 
 group :development do
