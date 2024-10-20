@@ -1,21 +1,18 @@
 <div class="mb-6" data-controller="previews">
-  <%= form.label :images, class: "block text-gray-700 font-medium mb-2" %><br>
+  <%= form.label :images, class: "block text-gray-700 font-medium mb-2" %>
   <%= form.file_field :images, multiple: true, accept: ".jpg, .jpeg, .png, .gif",
-                      direct_upload: true,
-                      data: { previews_target: "input", action: "change->previews#preview" },
-                      class: "border border-gray-300 rounded p-2 w-full" %>
+                    direct_upload: true,
+                    data: { previews_target: "input", action: "change->previews#preview", turbo: "false" },
+                    class: "border border-gray-300 rounded p-2 w-full" %>
 
-  <!-- 既存画像を表示 -->
-  <% if spot.images.attached? %>
-    <div id="existing-images" class="grid grid-cols-3 gap-4 mt-4">
+
+  <!-- プレビューエリア -->
+  <div id="image-preview" data-previews-target="preview" class="grid grid-cols-3 gap-4 mt-4">
+    <!-- 既存の画像がある場合 -->
+    <% if spot.images.attached? %>
       <% spot.images.each do |image| %>
-        <%= image_tag image, class: "w-32 h-32 object-cover rounded", data: { previews_target: "preview" } %>
+        <%= image_tag image, class: "w-32 h-32 object-cover rounded" %>
       <% end %>
-    </div>
-  <% else %>
-    <!-- 新規アップロードのための空のプレビュー領域 -->
-    <div id="image-preview" class="grid grid-cols-3 gap-4 mt-4">
-      <%= image_tag "", class: "w-32 h-32 object-cover rounded", data: { previews_target: "preview" } %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
