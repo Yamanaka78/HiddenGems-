@@ -17,6 +17,10 @@ class SpotsController < ApplicationController
     end
   end
 
+  def show
+    @spot = Spot.find(params[:id])
+  end
+
 
   private
 
