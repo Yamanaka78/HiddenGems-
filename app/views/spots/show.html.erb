@@ -1,0 +1,84 @@
+<div class="max-w-7xl mx-auto bg-white p-6">
+  <!-- 上部タイトル -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold"><%= @spot.title %></h1>
+  </div>
+
+  <!-- 画像ギャラリー -->
+  <%= render partial: "spots/image_gallery", locals: { spot: @spot } %>
+
+    <!-- タグボタン -->
+  <div class="mb-6 flex space-x-4">
+    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">デート</button>
+    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">食べ歩き</button>
+    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">お寺</button>
+    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">浅草</button>
+  </div>
+
+  <!-- タブナビゲーション -->
+  <div class="border-b border-gray-200 mb-6">
+    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+      <a href="#" class="text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 border-yellow-500 font-medium text-sm">詳細</a>
+      <a href="#" class="text-gray-500 whitespace-nowrap py-4 px-1 border-b-2 border-transparent font-medium text-sm">口コミ 50</a>
+      <a href="#" class="text-gray-500 whitespace-nowrap py-4 px-1 border-b-2 border-transparent font-medium text-sm">地図</a>
+    </nav>
+  </div>
+
+<!-- 基本情報 -->
+<div class="bg-white shadow rounded-lg p-6 mb-6">
+  <h2 class="text-xl font-bold mb-4">基本情報</h2>
+  <div class="text-gray-700">東京都台東区浅草2-3-1</div>
+  <div class="text-gray-700">03-3842-0181</div>
+  <div class="text-gray-700">創建年: 628年</div>
+  <div class="text-gray-700 mb-4">約1400年の歴史を誇る、東京観光でも人気のあるお寺。</div>
+  <div class="text-gray-700 mb-4"><%= @spot.description %></div>
+  <div class="text-gray-700">投稿者</div>
+  <div class="text-gray-700"><%= @spot.user.name %></div>
+</div>
+
+
+  <div class="bg-white shadow rounded-lg p-6 mb-6">
+  <div class="flex items-center mb-4">
+    <img class="h-10 w-10 rounded-full" src="#" alt="User profile picture">
+    <div class="ml-3">
+      <p class="text-sm font-medium text-gray-900">lucky</p>
+      <p class="text-sm text-gray-500">2024年10月23日</p>
+    </div>
+  </div>
+
+  <div class="text-sm text-gray-700 mb-4">
+    <p>9枚目まではどバス半日コースの分で、最後の1枚は別の日の夜に撮った分です…。やはり夜のほうがゆっくりしてます。昼と夜の人の多さが違いすぎ、夜は静けささえ感じます……</p>
+    <p>ゆっくり仲見世を見たい、浅草近辺を散策されたい方ははとバスツアーはおすすめしません……次は時間を気にせずにゆっくり周りたいと思います(˘ω˘)...</p>
+    <button class="text-yellow-500 hover:text-yellow-600 font-medium">続きを読む</button>
+  </div>
+
+  <!-- 口コミを投稿するボタン -->
+  <div class="border-t border-gray-200 pt-4">
+    <button class="w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600">
+      このスポットの口コミを投稿する
+    </button>
+  </div>
+  <button class="mt-4 text-blue-500 font-medium">もっと見る (50)</button>
+</div>
+
+
+  <!-- 記事 -->
+  <div class="bg-white shadow rounded-lg p-6 mb-6">
+    <h2 class="text-xl font-bold mb-4">モデルプラン</h2>
+    <div class="border border-gray-200 rounded-lg p-4 mb-4 flex">
+      <img class="w-20 h-20 rounded-lg" src="article.jpg" alt="Article image">
+      <div class="ml-4">
+        <p class="text-lg font-medium">【2019夏】浴衣で東京を散策するなら！デートにもおすすめ6選</p>
+        <p class="text-sm text-gray-500">aki2801</p>
+      </div>
+    </div>
+    <div class="border border-gray-200 rounded-lg p-4 mb-4 flex">
+      <img class="w-20 h-20 rounded-lg" src="article.jpg" alt="Article image">
+      <div class="ml-4">
+        <p class="text-lg font-medium">【2019夏】浴衣で東京を散策するなら！デートにもおすすめ6選</p>
+        <p class="text-sm text-gray-500">aki2801</p>
+      </div>
+    </div>
+    <button class="mt-4 text-blue-500 font-medium">もっと見る (50)</button>
+  </div>
+</div>

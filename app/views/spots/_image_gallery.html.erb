@@ -1,0 +1,9 @@
+<div class="flex gap-4 overflow-x-scroll scrollbar-hide">
+  <% if spot.images.attached? %>
+    <% spot.images.each do |image| %>
+      <div class="flex-shrink-0 w-96 h-60 mb-6">
+        <%= image_tag image, class: "w-full h-full object-cover rounded-lg" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
