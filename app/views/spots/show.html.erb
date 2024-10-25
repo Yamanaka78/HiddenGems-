@@ -4,16 +4,8 @@
     <h1 class="text-3xl font-bold"><%= @spot.title %></h1>
   </div>
 
-<!-- 画像ギャラリー -->
-<div class="flex gap-4 overflow-x-scroll scrollbar-hide">
-  <% if @spot.images.attached? %>
-    <% @spot.images.each do |image| %>
-      <div class="flex-shrink-0 w-96 h-60 mb-6">
-        <%= image_tag image, class: "w-full h-full object-cover rounded-lg" %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+  <!-- 画像ギャラリー -->
+  <%= render partial: "spots/image_gallery", locals: { spot: @spot } %>
 
     <!-- タグボタン -->
   <div class="mb-6 flex space-x-4">
