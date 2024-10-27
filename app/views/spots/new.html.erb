@@ -1,7 +1,7 @@
 <div class="max-w-3xl mx-auto mt-8">
   <h1 class="text-2xl font-semibold mb-4"><%= t('.title') %></h1>
 
-  <!-- form_withを使用したフォーム -->
+  <!-- フォーム -->
   <%= form_with model: @spot, class: "new_spot", local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
@@ -28,10 +28,16 @@
       <%= f.text_area :description, class: "border border-gray-300 rounded p-2 w-full", maxlength: "9999", rows: "5", placeholder: "スポット詳細を入力" %>
     </div>
 
+    <!-- タグ入力 -->
+    <div class="mb-6">
+      <%= f.label :tag_names, "タグ", class: "block text-gray-700 font-medium mb-2" %>
+      <%= f.text_field :tag_names, class: "border border-gray-300 rounded p-2 w-full", placeholder: "タグをカンマで区切って入力 (例: beach, sunset, mountain)" %>
+      <p class="text-sm text-gray-500 mt-1">例: "beach, sunset, mountain"</p>
+    </div>
+
     <!-- 投稿ボタン -->
     <div class="text-right">
       <%= f.submit t('.post'), class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" %>
     </div>
-
   <% end %>
 </div>
