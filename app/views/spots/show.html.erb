@@ -9,10 +9,7 @@
 
     <!-- タグボタン -->
   <div class="mb-6 flex space-x-4">
-    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">デート</button>
-    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">食べ歩き</button>
-    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">お寺</button>
-    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg">浅草</button>
+    <%= render partial: "spots/spot_tags", locals: { spot: @spot } %>
   </div>
 
   <!-- タブナビゲーション -->

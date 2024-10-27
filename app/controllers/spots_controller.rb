@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.includes(:user)
+    @spots = Spot.includes(:user, :tags)
   end
 
   def new
@@ -9,7 +9,9 @@ class SpotsController < ApplicationController
 
   def create
     @spot = current_user.spots.build(spot_params)
+    tags_list = params[:spot][:tag_names].split(',')
     if @spot.save
+      @spot.add_tags_to_spot(tags_list)
       redirect_to root_path, success: t("defaults.flash_message.created", item: Spot.model_name.human)
     else
       flash.now[:danger] = t("defaults.flash_message.not_created", item: Spot.model_name.human)

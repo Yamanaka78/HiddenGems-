@@ -54,8 +54,11 @@
           </p>
         </div>
         <div class="flex mt-4 space-x-2">
-          <span class="badge bg-blue-500 text-white">カテゴリー名</span> <!-- タグやカテゴリーを表示する場合に使用 -->
+          <% spot.tags.each do |tag| %>
+            <span class="badge bg-blue-500 text-white"><%= tag.tag_name %></span>
+          <% end %>
         </div>
+
         <div class="flex items-center mt-4">
           <!-- レーティングのデザインは仮です。モデルに評価を追加する場合は変更してください -->
           <div class="rating">
