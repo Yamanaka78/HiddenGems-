@@ -3,6 +3,8 @@ class Spot < ApplicationRecord
   has_many_attached :images
   has_many :spot_tags, dependent: :destroy
   has_many :tags, through: :spot_tags
+  has_many :reviews, dependent: :destroy
+
 
   # バリデーションの追加
   validates :title, presence: true, length: { maximum: 30 }

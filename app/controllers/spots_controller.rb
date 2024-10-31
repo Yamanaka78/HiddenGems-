@@ -9,7 +9,7 @@ class SpotsController < ApplicationController
 
   def create
     @spot = current_user.spots.build(spot_params)
-    tags_list = params[:spot][:tag_names].split(',')
+    tags_list = params[:spot][:tag_names].split(",")
     if @spot.save
       @spot.add_tags_to_spot(tags_list)
       redirect_to root_path, success: t("defaults.flash_message.created", item: Spot.model_name.human)

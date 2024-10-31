@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_27_073342) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_28_111608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_073342) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "spot_id", null: false
+    t.text "review_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_reviews_on_spot_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "spot_tags", force: :cascade do |t|
     t.bigint "spot_id", null: false
     t.bigint "tag_id", null: false
@@ -53,14 +63,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_073342) do
   end
 
   create_table "spots", force: :cascade do |t|
-    t.string "spot_image"
     t.string "title", null: false
+    t.string "spot", null: false
     t.text "description", null: false
     t.bigint "user_id", null: false
-    t.integer "visit_year", null: false
-    t.integer "visit_month", null: false
-    t.integer "visit_day", null: false
-    t.integer "purpose", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_spots_on_user_id"
@@ -84,6 +90,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_073342) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "spots"
+  add_foreign_key "reviews", "users"
   add_foreign_key "spot_tags", "spots"
   add_foreign_key "spot_tags", "tags"
   add_foreign_key "spots", "users"

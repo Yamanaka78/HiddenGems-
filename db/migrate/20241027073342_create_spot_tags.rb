@@ -8,6 +8,6 @@ class CreateSpotTags < ActiveRecord::Migration[7.2]
     end
 
     # spot_idとtag_idの組み合わせをユニークに保つインデックス
-    add_index :spot_tags, [:spot_id, :tag_id], unique: true
+    add_index :spot_tags, [ :spot_id, :tag_id ], unique: true
   end
 end

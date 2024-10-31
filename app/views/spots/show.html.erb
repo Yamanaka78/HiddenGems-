@@ -51,8 +51,7 @@
 
   <!-- 口コミを投稿するボタン -->
   <div class="border-t border-gray-200 pt-4">
-    <button class="w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600">
-      このスポットの口コミを投稿する
+    <%= link_to "口コミを投稿する", new_spot_review_path(@spot), class:"w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600"%>
     </button>
   </div>
   <button class="mt-4 text-blue-500 font-medium">もっと見る (50)</button>

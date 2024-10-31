@@ -1,0 +1,22 @@
+<div class="flex justify-center my-8">
+  <div class="w-full max-w-2xl">
+    <%= form_with model: review, url: spot_reviews_path(spot), class: "space-y-6" do |f| %>
+      <!-- Review Content Field -->
+      <div>
+        <%= f.label :review_content, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_area :review_content, class: "w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500", rows: "4", placeholder: Review.human_attribute_name(:review_content) %>
+      </div>
+      <!-- Images Upload Field -->
+      <div>
+        <%= f.label :images, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.file_field :images, class: "w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500", multiple: true %>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <%= f.submit t('defaults.post'), class: "w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
