@@ -11,6 +11,7 @@ ja:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
       require_login: ログインしてください
+    post: 投稿する
   user_sessions:
     new:
       title: ログイン

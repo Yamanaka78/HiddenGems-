@@ -7,9 +7,9 @@ class ReviewsController < ApplicationController
     review = current_user.reviews.build(review_params)
 
     if review.save
-      redirect_to spot_path(review.spot), success: t('defaults.flash_message.created', item: Review.model_name.human)
+      redirect_to spot_path(review.spot), success: t("defaults.flash_message.created", item: Review.model_name.human)
     else
-      redirect_to spot_path(review.spot), danger: t('defaults.flash_message.not_created', item: Review.model_name.human)
+      redirect_to spot_path(review.spot), danger: t("defaults.flash_message.not_created", item: Review.model_name.human)
     end
   end
 

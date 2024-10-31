@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "logout", to: "user_sessions#destroy"
 
   resources :spots, only: %i[index new create show] do
-    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+    resources :reviews, only: [ :new, :create, :edit, :update, :destroy ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

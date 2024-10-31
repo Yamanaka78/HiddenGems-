@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       spot: スポット
+      review: 口コミ
     attributes:
       user:
         name: ニックネーム
@@ -15,3 +16,6 @@ ja:
         title: タイトル
         tag: タグ
         description: スポット詳細
+      review:
+        images: 画像をアップロード
+        review_content: 口コミ
