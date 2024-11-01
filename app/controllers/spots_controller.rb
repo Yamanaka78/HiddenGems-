@@ -21,6 +21,8 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @review = Review.new
+    @reviews = @spot.reviews.includes(:user).order(created_at: :desc).limit(2)
   end
 
 
