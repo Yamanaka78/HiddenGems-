@@ -34,6 +34,18 @@ ja:
     new:
       title: スポットを投稿
       post: 投稿する
+    show:
+      review_tab: "口コミ %{count}"
+      post_review: "口コミを投稿する"
+      see_more_reviews: "もっと見る (%{count})"
+      detail_tab: "詳細"
+      map_tab: "地図"
+  review:
+    index:
+        detail_tab: "詳細"
+        review_tab: "口コミ %{count}"
+        map_tab: "地図"
+        post_review: "口コミを投稿する"
   header:
     login: ログイン
     logout: ログアウト

@@ -21,6 +21,10 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @review = Review.new
+    all_reviews = @spot.reviews.includes(:user).order(created_at: :desc)
+    @reviews = all_reviews.limit(5)
+    @reviews_count = all_reviews.size
   end
 
 
