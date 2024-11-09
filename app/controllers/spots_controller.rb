@@ -27,6 +27,12 @@ class SpotsController < ApplicationController
     @reviews_count = all_reviews.size
   end
 
+  def destroy
+    spot = current_user.spots.find(params[:id])
+    spot.destroy!
+    redirect_to spots_path, success: t('defaults.flash_message.deleted', item: spot.model_name.human), status: :see_other
+  end
+
 
   private
 

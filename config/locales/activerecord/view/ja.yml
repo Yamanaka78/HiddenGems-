@@ -7,10 +7,12 @@ ja:
       password: パスワード
       password_confirmation: パスワード確認
   defaults:
+    delete_confirm: 削除しますか？
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
       require_login: ログインしてください
+      deleted: "%{item}を削除しました"
     post: 投稿する
   user_sessions:
     new:
