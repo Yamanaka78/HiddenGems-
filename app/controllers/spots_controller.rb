@@ -34,7 +34,7 @@ class SpotsController < ApplicationController
   end
 
   def wishlists
-    @wishlist_spots = current_user.wishlists.includes(:user).order(created_at: :desc)
+    @wishlists = current_user.wishlists.includes(:user).order(created_at: :desc)
   end
 
   private
