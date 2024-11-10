@@ -1,0 +1,3 @@
+<%= link_to wishlists_path(spot_id: spot.id), id: "wishlist-button-for-spot-#{spot.id}", data: { turbo_method: :post } do %>
+  <i class="fas fa-solid fa-star"></i>
+<% end %>

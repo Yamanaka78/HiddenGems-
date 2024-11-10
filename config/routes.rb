@@ -7,10 +7,14 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
-  resources :spots, only: %i[index new create show] do
-    resources :reviews, only: [ :index, :new, :create, :edit, :update, :destroy ], shallow: true
+  resources :spots, only: %i[index new create show destroy] do
+    resources :reviews, only: %i[ index new create ], shallow: true
+    collection do
+      get :wishlists
+    end
   end
 
+  resources :wishlists, only: %i[create destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
