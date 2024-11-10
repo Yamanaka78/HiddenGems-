@@ -33,9 +33,11 @@ class SpotsController < ApplicationController
     redirect_to spots_path, success: t('defaults.flash_message.deleted', item: spot.model_name.human), status: :see_other
   end
 
+  def wishlists
+    @wishlist_spots = current_user.wishlists.includes(:user).order(created_at: :desc)
+  end
 
   private
-
 
   def spot_params
     params.require(:spot).permit(:title, :spot, :description, images: [])

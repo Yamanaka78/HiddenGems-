@@ -4,6 +4,7 @@ class Spot < ApplicationRecord
   has_many :spot_tags, dependent: :destroy
   has_many :tags, through: :spot_tags
   has_many :reviews, dependent: :destroy
+  has_many :wishlists, dependent: :destroy
 
 
   # バリデーションの追加

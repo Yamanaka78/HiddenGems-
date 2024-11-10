@@ -1,0 +1,7 @@
+<div class='ms-auto'>
+  <% if current_user.wishlist?(spot) %>
+    <%= render 'unwishlist', { spot: spot } %>
+  <% else %>
+    <%= render 'wishlist', { spot: spot } %>
+  <% end %>
+</div>

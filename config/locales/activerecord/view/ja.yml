@@ -42,17 +42,26 @@ ja:
       see_more_reviews: "もっと見る (%{count})"
       detail_tab: "詳細"
       map_tab: "地図"
+    Wishlists:
+      title: お気に入り一覧
+      no_result: お気に入りがありません。
   review:
     index:
         detail_tab: "詳細"
         review_tab: "口コミ %{count}"
         map_tab: "地図"
         post_review: "口コミを投稿する"
+  wishlists:
+    create:
+      success: お気に入りにしました
+    destroy:
+      success: お気に入りを外しました
   header:
     login: ログイン
     logout: ログアウト
     new_registration: 新規登録
     spot_posts: スポット投稿
     spots_list: スポット一覧へ
+    wish_lists: お気に入り一覧へ
   home:
     spots_list: スポット一覧へ

@@ -9,9 +9,23 @@ class User < ApplicationRecord
 
   has_many :spots, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :wishlists, dependent: :destroy
+  has_many :wishlist_spots, through: :wishlists, source: :spot
 
 
   def own?(object)
     id == object&.user_id
+  end
+
+  def wishlist(spot)
+    wishlist_spots << spot
+  end
+
+  def unwishlist(spot)
+    wishlist_spots.destroy(spot)
+  end
+
+  def wishlist?(spot)
+    wishlist_spots.include?(spot)
   end
 end
