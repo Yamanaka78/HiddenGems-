@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :wishlists, dependent: :destroy
   has_many :wishlist_spots, through: :wishlists, source: :spot
-
+  has_many :plans, dependent: :destroy
 
   def own?(object)
     id == object&.user_id

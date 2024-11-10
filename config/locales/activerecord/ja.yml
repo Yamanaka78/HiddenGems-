@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       spot: スポット
       review: 口コミ
+      plan: プラン
     attributes:
       user:
         name: ニックネーム

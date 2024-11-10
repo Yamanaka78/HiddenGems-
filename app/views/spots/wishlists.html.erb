@@ -5,11 +5,12 @@
     </div>
 
     <!-- Wishlist Items -->
-    <% if @wishlist_spots.present? %>
+    <% if @wishlists.present? %>
       <ul class="space-y-6">
-        <%= render @wishlist_spots %>
+        <%= render @wishlists %>
       </ul>
     <% else %>
-      <p><%= t('.no_result') %></p>    <% end %>
+        <p><%= t('.no_result') %></p>
+    <% end %>
   </section>
 </div>
