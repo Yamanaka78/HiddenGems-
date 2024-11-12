@@ -1,0 +1,21 @@
+<!-- app/views/plans/index.html.erb -->
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold text-center mb-6">プラン一覧</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @public_plans.each do |plan| %>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-2"><%= plan.plan_name %></h2>
+        <p class="text-gray-700 mb-4"><%= truncate(plan.description, length: 100) %></p>
+
+        <!-- 作成者情報と作成日 -->
+        <div class="flex items-center justify-between">
+          <span class="text-gray-600 text-sm"><%= plan.user.name %></span>
+          <span class="text-gray-500 text-sm"><%= plan.created_at.strftime("%Y年%m月%d日") %></span>
+        </div>
+        <!-- 詳細ページへのリンク -->
+        <%= link_to '詳細を見る', plan_path(plan), class: "mt-4 inline-block text-blue-500 hover:underline" %>
+      </div>
+    <% end %>
+  </div>
+</div>

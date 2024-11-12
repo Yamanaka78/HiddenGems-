@@ -7,6 +7,10 @@
   <!-- アイコンメニュー -->
   <div class="header-icon">
     <ul class="flex items-center space-x-6">
+      <li class="flex items-center">
+        <%= link_to "プラン作成", new_plan_path, class:"bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600" %>
+      </li>
+
       <!-- 投稿ボタン -->
       <li class="flex items-center">
         <%= link_to t('header.spot_posts'), new_spot_path, class:"bg-orange-500 text-white font-bold py-2 px-4 rounded hover:bg-orange-600" %>
@@ -59,7 +63,7 @@
           <%= link_to t('header.spots_list'), spots_path, class: "flex justify-between items-center" %>
         </li>
         <li>
-          <%= link_to "プラン一覧", class: "flex justify-between items-center"%>
+          <%= link_to t('header.plan_lists'), plans_path, class: "flex justify-between items-center"%>
         </li>
         <li>
           <%= link_to t('header.wish_lists'), wishlists_spots_path, class: "flex justify-between items-center" %>
