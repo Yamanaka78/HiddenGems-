@@ -1,6 +1,8 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.includes(:user, :tags)
+    @q = Spot.ransack(params[:q])
+    @spots = @q.result(distinct: true).includes(:user, :tags).order(params.dig(:q, :s) || "created_at desc")
+    @tags = Tag.all
   end
 
   def new
@@ -25,12 +27,14 @@ class SpotsController < ApplicationController
     all_reviews = @spot.reviews.includes(:user).order(created_at: :desc)
     @reviews = all_reviews.limit(5)
     @reviews_count = all_reviews.size
+
+    @public_plans = @spot.plans.where(public: true).limit(4)
   end
 
   def destroy
     spot = current_user.spots.find(params[:id])
     spot.destroy!
-    redirect_to spots_path, success: t('defaults.flash_message.deleted', item: spot.model_name.human), status: :see_other
+    redirect_to spots_path, success: t("defaults.flash_message.deleted", item: spot.model_name.human), status: :see_other
   end
 
   def wishlists

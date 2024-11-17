@@ -1,0 +1,37 @@
+<article class="min-w-[300px] bg-white rounded-lg shadow-md">
+  <div class="relative">
+    <% if spot.images.attached? %>
+      <%= image_tag url_for(spot.images.first), alt: spot.title, class: 'w-full h-48 object-cover' %>
+    <% end %>
+  </div>
+  <div class="p-4">
+    <h3 class="text-lg font-semibold flex items-center">
+      <svg class="w-4 h-4 mr-2" viewBox="0 0 30 30" aria-hidden="true">
+        <use xlink:href="/images/common/svg/icon.svg#icon_pin_fill"></use>
+      </svg>
+      <%= spot.title %>
+    </h3>
+    <div class="description-container h-24 overflow-hidden">
+      <p class="mt-2 text-gray-600 break-words break-all">
+        <%= truncate(spot.description, length: 50) %>
+      </p>
+    </div>
+    <div class="flex mt-4 space-x-2">
+      <% spot.tags.each do |tag| %>
+        <span class="badge bg-blue-500 text-white"><%= tag.tag_name %></span>
+      <% end %>
+    </div>
+
+    <div class="flex items-center mt-4">
+      <!-- レーティングのデザインは仮です。モデルに評価を追加する場合は変更してください -->
+      <div class="rating">
+        <input type="radio" class="mask mask-star bg-yellow-400" checked>
+        <input type="radio" class="mask mask-star bg-yellow-400">
+        <input type="radio" class="mask mask-star bg-yellow-400">
+        <input type="radio" class="mask mask-star bg-yellow-400">
+        <input type="radio" class="mask mask-star bg-yellow-400">
+      </div>
+      <p class="ml-2 text-sm">4.16 (104件)</p>
+    </div>
+  </div>
+</article>

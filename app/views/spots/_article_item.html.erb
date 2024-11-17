@@ -1,0 +1,11 @@
+<div class="border border-gray-200 rounded-lg p-4 mb-4 flex">
+  <% first_spot_with_image = plan.spots.find { |spot| spot.images.attached? } %>
+  <img class="w-20 h-20 rounded-lg"src="<%= first_spot_with_image ? rails_blob_path(first_spot_with_image.images.first, only_path: true) : asset_path('default_image.jpg') %>"
+       alt="Spot image">
+  <div class="ml-4">
+    <p class="text-lg font-medium">
+      <%= link_to plan.plan_name, plan_path(plan), class: "text-blue-500 hover:underline" %>
+    </p>
+    <p class="text-sm text-gray-500"><%= plan.user.name %></p>
+  </div>
+</div>

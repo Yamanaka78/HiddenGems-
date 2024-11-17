@@ -1,0 +1,7 @@
+<div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
+  <% if spots.present? %>
+    <%= render spots %>
+  <% else %>
+    <div class="mb-3">スポットがありません</div>
+  <% end %>
+</div>

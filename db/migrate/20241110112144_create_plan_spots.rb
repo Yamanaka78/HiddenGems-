@@ -10,6 +10,6 @@ class CreatePlanSpots < ActiveRecord::Migration[7.2]
       t.timestamps
     end
 
-    add_index :plan_spots, [:plan_id, :spot_id], unique: true
+    add_index :plan_spots, [ :plan_id, :spot_id ], unique: true
   end
 end
