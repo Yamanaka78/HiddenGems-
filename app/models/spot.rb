@@ -44,4 +44,13 @@ class Spot < ApplicationRecord
       self.tags << spot_tag
     end
   end
+
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "created_at", "description", "id", "spot", "title", "updated_at", "user_id" ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    [ "tags", "reviews" ]
+  end
 end

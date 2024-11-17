@@ -1,0 +1,28 @@
+<article class="min-w-[300px] bg-white rounded-lg shadow-md">
+  <div class="relative">
+    <% if plan.spots.any? && plan.spots.first.images.attached? %>
+      <%= image_tag url_for(plan.spots.first.images.first), alt: plan.spots.first.title, class: "w-full h-48 object-cover" %>
+    <% else %>
+      <img class="w-full h-48 object-cover" src="/path/to/default-image.jpg" alt="No Image">
+    <% end %>
+  </div>
+  <div class="p-4">
+    <h3 class="text-lg font-semibold flex items-center">
+      <svg class="w-4 h-4 mr-2" viewBox="0 0 30 30" aria-hidden="true">
+        <use xlink:href="/images/common/svg/icon.svg#icon_pin_fill"></use>
+      </svg>
+      <%= plan.plan_name %>
+    </h3>
+    <p class="mt-2 text-gray-600">
+      <%= truncate(plan.description, length: 50) %>
+    </p>
+    <div class="flex items-center mt-4">
+      <p class="text-sm text-gray-600">
+        作成者: <%= plan.user.name %>
+      </p>
+    </div>
+    <div class="mt-4">
+      <%= link_to 'プランの詳細を見る', plan_path(plan), class: "text-blue-500 hover:underline" %>
+    </div>
+  </div>
+</article>

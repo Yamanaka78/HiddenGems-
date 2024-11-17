@@ -1,6 +1,5 @@
 # app/controllers/plans_controller.rb
 class PlansController < ApplicationController
-
   def index
     # 公開プラン、またはログイン中のユーザーが作成したプランを取得
     @public_plans = Plan.where(public: true).or(Plan.where(user: current_user)).order(created_at: :desc)
@@ -40,7 +39,7 @@ class PlansController < ApplicationController
 
     # 作成者または公開プランかどうかをチェック
     unless @plan.public? || current_user == @plan.user
-      redirect_to plans_path, alert: 'このプランは非公開です'
+      redirect_to plans_path, alert: "このプランは非公開です"
     end
   end
 

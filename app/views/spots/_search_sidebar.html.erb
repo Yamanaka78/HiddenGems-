@@ -1,0 +1,29 @@
+<aside class="w-1/5 bg-white p-6 border-r border-gray-200">
+  <h2 class="text-xl font-bold mb-4">検索フィルター</h2>
+
+  <%= search_form_for @q, url: spots_path, method: :get, class: "space-y-6" do |f| %>
+    <div>
+      <h3 class="font-semibold mb-2">スポット名で検索</h3>
+      <%= f.search_field :title_or_spot_cont,
+            class: "w-full border border-gray-300 rounded p-2",
+            placeholder: "スポット名" %>
+    </div>
+
+    <div>
+      <h3 class="font-semibold mb-2">タグで絞り込み</h3>
+      <ul class="space-y-2">
+        <% Tag.all.each do |tag| %>
+          <li>
+            <%= check_box_tag "q[tags_tag_name_in][]", tag.tag_name,
+                params.dig(:q, :tags_tag_name_in)&.include?(tag.tag_name), id: "tag_#{tag.id}" %>
+            <label for="tag_#{tag.id}"><%= tag.tag_name %></label>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div>
+      <%= f.submit "検索する", class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" %>
+    </div>
+  <% end %>
+</aside>

@@ -1,0 +1,7 @@
+<div class="bg-white shadow rounded-lg p-6 mb-6">
+  <h2 class="text-xl font-bold mb-4">モデルプラン</h2>
+  <% plans.each do |plan| %>
+    <%= render partial: 'spots/article_item', locals: { plan: plan } %>
+  <% end %>
+  <%= link_to "もっと見る (#{@spot.plans.count})", plans_path, class: "mt-4 text-blue-500 font-medium" %>
+</div>

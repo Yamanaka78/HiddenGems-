@@ -1,0 +1,7 @@
+<div class="bg-white shadow rounded-lg p-6 mb-6">
+  <%= render reviews %>
+  <!-- 口コミを投稿するボタン -->
+  <div class="border-t border-gray-200 pt-4">
+    <%= link_to t('spots.show.post_review'), new_spot_review_path(spot), class: "w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600" %>
+  </div>
+</div>
