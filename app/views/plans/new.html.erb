@@ -27,13 +27,26 @@
       </div>
 
       <h2 class="text-xl font-semibold mb-4 text-center">お気に入りからスポットを選択</h2>
-      <div class="space-y-4 mb-6">
-        <% @wishlist_spots.each do |spot| %>
-          <%= render 'spot_selector', spot: spot %>
-        <% end %>
-      </div>
 
-      <%= f.submit "プランを作成", class: "w-full bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+      <% if @wishlist_spots.present? %>
+        <div class="space-y-4 mb-6">
+          <% @wishlist_spots.each do |spot| %>
+            <%= render 'spot_selector', spot: spot %>
+          <% end %>
+        </div>
+
+        <!-- プラン作成ボタン -->
+        <%= f.submit "プランを作成", class: "w-full bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+      <% else %>
+        <div class="text-center text-gray-500 mb-6">
+          お気に入りのスポットがありません。お気に入りのスポットからプランを作成できます。
+        </div>
+
+        <!-- ボタンを無効化 -->
+        <button disabled class="w-full bg-gray-300 text-white font-semibold px-4 py-2 rounded cursor-not-allowed">
+          プランを作成
+        </button>
+      <% end %>
     <% end %>
   </div>
 </div>
