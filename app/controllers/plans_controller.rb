@@ -33,15 +33,11 @@ class PlansController < ApplicationController
     end
   end
 
-  # app/controllers/plans_controller.rb
   def show
-    @plan = Plan.find(params[:id])
-
-    # 作成者または公開プランかどうかをチェック
-    unless @plan.public? || current_user == @plan.user
-      redirect_to plans_path, alert: "このプランは非公開です"
-    end
+    # 公開プラン、またはログイン中のユーザーが作成したプランのみ取得
+    @plan = Plan.where(public: true).or(Plan.where(user: current_user)).find_by(id: params[:id])
   end
+
 
   private
 
