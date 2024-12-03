@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "unwishlist-button-for-spot-#{@spot.id}" do %>
+  <%= render 'spots/wishlist', spot: @spot %>
+<% end %>
