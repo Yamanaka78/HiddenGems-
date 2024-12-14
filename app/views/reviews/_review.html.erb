@@ -13,7 +13,7 @@
     <%= simple_format(review.review_content) %>
   </div>
 
-  <!-- 添付された画像を動的に表示 -->
+  <!-- 添付された画像を表示 -->
   <div class="flex space-x-2 overflow-x-auto mb-4">
     <% review.images.each do |image| %>
       <a href="<%= url_for(image) %>" class="w-24 h-24 flex-shrink-0" target="_blank" rel="noopener">

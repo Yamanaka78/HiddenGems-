@@ -1,0 +1,45 @@
+<div class="w-1/2 mx-auto bg-white p-8">
+  <!-- 上部タイトル -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold"><%= @spot.title %></h1>
+  </div>
+
+  <!-- 画像ギャラリー -->
+  <%= render partial: "spots/image_gallery", locals: { spot: @spot } %>
+
+  <!-- タグボタン -->
+  <%= render partial: "spots/spot_tags", locals: { spot: @spot } %>
+
+  <!-- タブナビゲーション -->
+  <%= render partial: "spots/map_tab", locals: { spot: @spot, reviews_count: @reviews_count } %>
+
+  <p>住所：<%= @spot.address %></p>
+  <div id="map" style="height: 600px;"></div>
+</div>
+
+
+<script>
+  function initMap() {
+    // 地図要素を取得する
+    const mapElement = document.getElementById('map');
+
+    // 地図の初期設定
+    const mapOptions = {
+      center: { lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %> },
+      zoom: 14 // より詳細に表示するためズームレベルを調整
+    };
+
+    // 地図を生成
+    const map = new google.maps.Map(mapElement, mapOptions);
+
+    // マーカーを追加
+    new google.maps.Marker({
+      position: { lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %> },
+      map: map,
+      title: '<%= j @spot.title %>' // マーカーのタイトルを設定
+    });
+  }
+</script>
+
+<!-- Google Maps APIの呼び出し -->
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap" async defer></script>

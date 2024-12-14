@@ -34,7 +34,7 @@ ja:
       failure: ユーザー登録に失敗しました
   spots:
     new:
-      title: スポットを投稿
+      title: あなたのおすすめスポットを投稿
       post: 投稿する
     show:
       review_tab: "口コミ %{count}"

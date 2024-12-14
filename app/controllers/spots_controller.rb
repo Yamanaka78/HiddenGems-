@@ -41,9 +41,17 @@ class SpotsController < ApplicationController
     @wishlists = current_user.wishlists.includes(:user).order(created_at: :desc)
   end
 
+  def map
+    @spot = Spot.find_by(id: params[:id])
+    unless @spot
+      redirect_to root_path, alert: "Spot not found"
+    end
+  end
+
+
   private
 
   def spot_params
-    params.require(:spot).permit(:title, :spot, :description, images: [])
+    params.require(:spot).permit(:title, :spot, :description, :address, images: [])
   end
 end
