@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     collection do
       get :wishlists
     end
+    member do
+      get :map
+    end
   end
 
   resources :wishlists, only: %i[create destroy]

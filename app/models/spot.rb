@@ -9,12 +9,16 @@ class Spot < ApplicationRecord
   has_many :plan_spots, dependent: :destroy
   has_many :plans, through: :plan_spots
 
+  # geocoderの設定
+  geocoded_by :address
+  after_validation :geocode
 
   # バリデーションの追加
   validates :title, presence: true, length: { maximum: 30 }
   validates :spot, presence: true
   validates :description, presence: true, length: { maximum: 9999 }
-  # validates :tag, length: { maximum: 30 }, allow_blank: true
+  validates :address, presence: true, length: { maximum: 255 }
+  validate :validate_address
   validate :image_content_type
   validate :image_size
 
@@ -42,6 +46,13 @@ class Spot < ApplicationRecord
     spot_tags.each do |new_name|
       spot_tag = Tag.find_or_create_by(tag_name: new_name)
       self.tags << spot_tag
+    end
+  end
+
+  def validate_address
+    geocoded = Geocoder.search(address)
+    unless geocoded&.first&.coordinates.present?
+      errors.add(:address, "\u304C\u5B58\u5728\u3057\u307E\u305B\u3093") # 「住所が存在しません」と表示される
     end
   end
 

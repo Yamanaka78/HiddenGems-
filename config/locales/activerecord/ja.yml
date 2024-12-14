@@ -13,10 +13,12 @@ ja:
         password_confirmation: パスワード確認
       spot:
         images: 画像をアップロード
-        spot: 訪れたスポット名
-        title: タイトル
+        spot: おすすめ場所
+        title: キャッチフレーズ
         tag: タグ
-        description: スポット詳細
+        description: おすすめのポイント
+        address: 住所
+        tag_names: ジャンルタグの追加
       review:
         images: 画像をアップロード
         review_content: 口コミ

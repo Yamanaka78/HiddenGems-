@@ -1,8 +1,8 @@
-<div class="max-w-3xl mx-auto mt-8">
-  <h1 class="text-2xl font-semibold mb-4"><%= t('.title') %></h1>
+<div class="max-w-3xl mx-auto mt-8 p-6 bg-white shadow-lg rounded-xl">
+  <h1 class="text-3xl font-semibold text-center mb-6 text-gray-800"><%= t('.title') %></h1>
 
   <!-- フォーム -->
-  <%= form_with model: @spot, class: "new_spot", local: true do |f| %>
+  <%= form_with model: @spot, class: "space-y-6", local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <!-- 画像アップロード -->
@@ -11,33 +11,38 @@
     <!-- スポットの選択 -->
     <div class="mb-6">
       <%= f.label :spot, class: "block text-gray-700 font-medium mb-2" %>
-      <div class="relative">
-        <%= f.text_field :spot, class: "border border-gray-300 rounded p-2 w-full", placeholder: "スポットを選択または入力" %>
-      </div>
+      <%= f.text_field :spot, id: "Spot", class: "border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400", placeholder: "スポットを選択または入力" %>
+    </div>
+
+    <!-- 住所 -->
+    <div class="mb-6">
+      <%= f.label :address, class: "block text-gray-700 font-medium mb-2" %>
+      <%= f.text_field :address, id: "Address", autofocus: true, class: "border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400", placeholder: "住所を入力 (例: 東京都渋谷区渋谷1-2-3)" %>
     </div>
 
     <!-- タイトル -->
     <div class="mb-6">
       <%= f.label :title, class: "block text-gray-700 font-medium mb-2" %>
-      <%= f.text_field :title, class: "border border-gray-300 rounded p-2 w-full", maxlength: "30", placeholder: "タイトルを入力" %>
+      <%= f.text_field :title, id: "Title", class: "border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400", maxlength: "30", placeholder: "タイトルを入力" %>
     </div>
 
     <!-- スポット詳細 -->
     <div class="mb-6">
-      <%= f.label :description, "スポット詳細", class: "block text-gray-700 font-medium mb-2" %>
-      <%= f.text_area :description, class: "border border-gray-300 rounded p-2 w-full", maxlength: "9999", rows: "5", placeholder: "スポット詳細を入力" %>
+      <%= f.label :description, class: "block text-gray-700 font-medium mb-2" %>
+      <%= f.text_area :description, id: "Description", class: "border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400", maxlength: "9999", rows: "5", placeholder: "スポット詳細を入力" %>
     </div>
 
     <!-- タグ入力 -->
     <div class="mb-6">
-      <%= f.label :tag_names, "タグ", class: "block text-gray-700 font-medium mb-2" %>
-      <%= f.text_field :tag_names, class: "border border-gray-300 rounded p-2 w-full", placeholder: "タグをカンマで区切って入力 (例: beach, sunset, mountain)" %>
-      <p class="text-sm text-gray-500 mt-1">例: "beach, sunset, mountain"</p>
+      <%= f.label :tag_names, class: "block text-gray-700 font-medium mb-2" %>
+      <%= f.text_field :tag_names, class: "border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400", placeholder: "タグをカンマで区切って入力 (例: デート, 友達, スポーツ, ドライブ, 海)" %>
     </div>
 
     <!-- 投稿ボタン -->
     <div class="text-right">
-      <%= f.submit t('.post'), class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" %>
+      <%= f.submit t('.post'), class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-200 ease-in-out" %>
     </div>
   <% end %>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initialize"></script>
