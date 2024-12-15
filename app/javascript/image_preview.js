@@ -1,9 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
+function initializeImagePreview() {
   const fileInput = document.getElementById("image-upload");
   const previewContainer = document.getElementById("image-preview");
 
-  // ファイル選択時のプレビュー表示
-  fileInput.addEventListener("change", function () {
+  // 要素が存在しない場合は処理を終了
+  if (!fileInput || !previewContainer) return;
+
+  // イベントリスナーが多重登録されないよう解除
+  fileInput.removeEventListener("change", handleFileChange);
+  fileInput.addEventListener("change", handleFileChange);
+
+  function handleFileChange() {
     // プレビューエリアをクリア
     previewContainer.innerHTML = "";
 
@@ -23,5 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // ファイルをData URLとして読み込む
       reader.readAsDataURL(file);
     });
-  });
-});
+  }
+}
+
+// Turbo フレーム対応 & 初期化
+document.addEventListener("turbo:load", initializeImagePreview);
