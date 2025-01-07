@@ -1,0 +1,15 @@
+<div id="section-4" class="max-w-sm mx-auto hidden">
+      <!-- チェックリスト -->
+      <div class="mb-4">
+        <%= f.label :checklist, "持ち物リスト", class: "block text-gray-700 font-semibold mb-2" %>
+        <%= f.text_area :checklist, placeholder: "持ち物や準備項目をリスト形式で入力してください", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+      </div>
+
+      <!-- メモ機能 -->
+      <div class="mb-4">
+        <%= f.label :notes, "メモ", class: "block text-gray-700 font-semibold mb-2" %>
+        <%= f.text_area :notes, placeholder: "メモを記入してください", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+      </div>
+  <button type="button" class="prev-step bg-gray-300 px-4 py-2 rounded">戻る</button>
+  <%= f.submit "プランを作成", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"%>
+</div>

@@ -1,0 +1,10 @@
+<div id="section-3" class="max-w-sm mx-auto hidden">
+  <h2 class="text-lg font-semibold mb-4">行きたいスポットを選択</h2>
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <%= render partial: "spot_selector", collection: @wishlist_spots, as: :spot, locals: { f: f } %>
+  </div>
+
+  <!-- ボタン -->
+  <button type="button" class="prev-step bg-gray-300 px-4 py-2 rounded">戻る</button>
+  <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded">次へ</button>
+</div>

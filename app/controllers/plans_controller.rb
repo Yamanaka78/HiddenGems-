@@ -13,7 +13,7 @@ class PlansController < ApplicationController
   def create
     @plan = current_user.plans.new(plan_params)
     if @plan.save
-      spot_ids = params[:plan][:spot_ids].reject(&:blank?)
+      spot_ids = params[:plan][:selected_spots].reject(&:blank?)
       spot_ids.each do |spot_id|
         order = params[:plan][:order][spot_id]
         visit_time = params[:plan][:visit_times][spot_id]
@@ -46,6 +46,18 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:plan_name, :description, :public)
+    params.require(:plan).permit(
+      :plan_name,
+      :description,
+      :public,
+      :start_date,
+      :end_date,
+      :budget,
+      :category,
+      :number_of_people,
+      :weather_link,
+      :checklist,
+      :notes
+  )
   end
 end
