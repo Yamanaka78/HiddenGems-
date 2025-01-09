@@ -36,7 +36,7 @@ class Plan < ApplicationRecord
     return if start_date.blank? || end_date.blank?
 
     if end_date < start_date
-      errors.add(:end_date, "は開始日以降の日付を指定してください")
+      errors.add(:end_date, "は出発日以降の日付を指定してください")
     end
   end
 end
