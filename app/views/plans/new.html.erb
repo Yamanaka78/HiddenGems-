@@ -1,39 +1,19 @@
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-  <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full mb-4">
-    <h1 class="text-2xl font-bold mb-6 text-center">新しいプランを作成</h1>
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+    <!-- ステップナビゲーション -->
+    <div class="steps flex justify-between mb-6">
+      <div class="step active" id="step-1">1. 基本情報</div>
+      <div class="step" id="step-2">2. 旅行詳細</div>
+      <div class="step" id="step-3">3. スポット選択</div>
+      <div class="step" id="step-4">4. オプション設定</div>
+    </div>
 
-    <%= form_with model: @plan, local: true do |f| %>
-      <div class="mb-4">
-        <%= f.label :plan_name, "プラン名", class: "block text-gray-700 font-semibold mb-2" %>
-        <%= f.text_field :plan_name, required: true, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
-      </div>
-
-      <div class="mb-4">
-        <%= f.label :description, "説明", class: "block text-gray-700 font-semibold mb-2" %>
-        <%= f.text_area :description, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
-      </div>
-
-      <!-- 公開設定 -->
-      <div class="mb-4">
-        <span class="block text-gray-700 font-semibold mb-2">公開設定</span>
-        <div class="flex items-center mb-2">
-          <%= f.radio_button :public, true, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" %>
-          <%= f.label :public, "全体に公開", class: "ml-2 text-gray-700" %>
-        </div>
-        <div class="flex items-center">
-          <%= f.radio_button :public, false, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" %>
-          <%= f.label :public, "非公開", class: "ml-2 text-gray-700" %>
-        </div>
-      </div>
-
-      <h2 class="text-xl font-semibold mb-4 text-center">お気に入りからスポットを選択</h2>
-      <div class="space-y-4 mb-6">
-        <% @wishlist_spots.each do |spot| %>
-          <%= render 'spot_selector', spot: spot %>
-        <% end %>
-      </div>
-
-      <%= f.submit "プランを作成", class: "w-full bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+    <%= form_with model: @plan, local: true, id: "plan-form" do |f| %>
+      <!-- セクションを動的に挿入 -->
+      <%= render partial: "plans/section_1", locals: { f: f } %>
+      <%= render partial: "plans/section_2", locals: { f: f } %>
+      <%= render partial: "plans/section_3", locals: { f: f, wishlist_spots: @wishlist_spots } %>
+      <%= render partial: "plans/section_4", locals: { f: f } %>
     <% end %>
   </div>
 </div>
